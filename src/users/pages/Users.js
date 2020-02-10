@@ -7,7 +7,7 @@ export const Users = () => {
       id: 1,
       name: "Alex Selariu",
       image:
-        "https://www.capital.ro/wp-content/uploads/2019/10/timisoara-catedrala.jpg",
+        "https://image.shutterstock.com/image-photo/beauty-woman-face-portrait-beautiful-260nw-488715607.jpg",
       places: 3
     }
   ];
