@@ -55,8 +55,13 @@ export const NewPlace = () => {
     });
   }, []);
 
+  const placeSubmitHandler = e => {
+    e.preventDefault();
+    console.log(formState.inputs);
+  };
+
   return (
-    <form className="place-form">
+    <form className="place-form" onSubmit={placeSubmitHandler}>
       <Input
         id="title"
         element="input"
