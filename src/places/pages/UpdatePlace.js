@@ -1,5 +1,11 @@
-import React from 'react'
-import {useParams} from 'react-router-dom'
+import React from "react";
+import { useParams } from "react-router-dom";
+import { Input } from "../../shared/components/FormElements/Input";
+import Button from "../../shared/components/FormElements/Button";
+import {
+  VALIDATOR_REQUIRE,
+  VALIDATOR_MINLENGTH
+} from "../../shared/util/validators";
 
 const PLACES = [
   {
@@ -32,19 +38,42 @@ const PLACES = [
 export const UpdatePlace = () => {
   const placeId = useParams().placeId;
 
-  const identifiedPlace = PLACES.find(p => p.id === placeId)
+  const identifiedPlace = PLACES.find(p => p.id === placeId);
 
-  id(!identifiedPlace) {
-    return(
-      <div className='center'>
+  if (!identifiedPlace) {
+    return (
+      <div className="center">
         <h2>Could not find place!</h2>
       </div>
-    )
+    );
   }
 
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <form>
+      <Input
+        id="title"
+        element="input"
+        type="text"
+        label="Title"
+        validators={[VALIDATOR_REQUIRE()]}
+        errorText="Please enter a valid title"
+        onInput={() => {}}
+        value={identifiedPlace.title}
+        valid={true}
+      />
+      <Input
+        id="description"
+        element="textarea"
+        label="Description"
+        validators={[VALIDATOR_MINLENGTH(5)]}
+        errorText="Please enter a valid description"
+        onInput={() => {}}
+        value={identifiedPlace.title}
+        valid={true}
+      />
+      <Button type="submit" disabled={true}>
+        Update place
+      </Button>
+    </form>
+  );
+};
