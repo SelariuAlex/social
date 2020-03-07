@@ -40,9 +40,23 @@ const PLACES = [
 export const UpdatePlace = () => {
   const placeId = useParams().placeId;
 
+  const [formState, inputHandler, setFormData] = useForm(
+    {
+      title: {
+        value: "",
+        isValid: false
+      },
+      description: {
+        value: "",
+        isValid: false
+      }
+    },
+    false
+  );
+
   const identifiedPlace = PLACES.find(p => p.id === placeId);
 
-  const [formState, inputHandler] = useForm(
+  setFormData(
     {
       title: {
         value: identifiedPlace.title,
