@@ -25,6 +25,18 @@ export const PlaceItem = props => {
           <Map center={props.coordinates} zoom={16} />
         </div>
       </Modal>
+      <Modal
+        header="Are you sure?"
+        footerClass="place-item__modal-actions"
+        footer={
+          <>
+            <Button invers>Cancel</Button>
+            <Button danger>Delete</Button>
+          </>
+        }
+      >
+        <p>Do you want to delete this place?</p>
+      </Modal>
       <li className="place-item">
         <Card className="place-item__content">
           <div className="place-item__image">
