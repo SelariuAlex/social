@@ -13,7 +13,7 @@ import "./Auth.css";
 export const Auth = () => {
   const [isLoginMode, setIsLoginMode] = useState(true);
 
-  const [formState, inputHandler] = useForm(
+  const [formState, inputHandler, setFormData] = useForm(
     {
       email: {
         value: "",
@@ -28,6 +28,26 @@ export const Auth = () => {
   );
 
   const switchModelHandler = () => {
+    if (!isLoginMode) {
+      setFormData(
+        {
+          ...formState.inputs,
+          name: null
+        },
+        formState.inputs.email.isValid && formState.inputs.password.isValid
+      );
+    } else {
+      setFormData(
+        {
+          ...formState.inputs,
+          name: {
+            value: "",
+            isValid: false
+          }
+        },
+        false
+      );
+    }
     setIsLoginMode(prevMode => !prevMode);
   };
 
